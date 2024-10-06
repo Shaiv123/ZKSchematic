@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="zk schematic" default="dist" basedir=".">
+    <description>
+    </description>
+	
+	<property name="jre" location="${java.home}/lib"/>
+    <property name="src" location="src"/>
+    <property name="lib" location="lib"/>
+    <property name="build" location="build"/>
+    <property name="build.classes" location="${build}/classes"/>
+    <property name="build.dist" location="${build}/dist"/>
+    
+	<path id="bootclasspath">
+    </path>
+	
+    <path id="classpath">
+        <fileset dir="${lib}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>   
+    
+    <target name="clean"
+		description="Removes build directory.">
+    	<delete dir="${build}"/>
+	</target>
+	
+    <target name="init" depends="clean"
+        description="Create the output directories.">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${build.classes}"/>
+    </target>
+    
+    
+    <target name="compile"
+            depends="init"
+            description="Compile the source.">
+
+        <javac destdir="${build.classes}" optimize="on" debug="on" 
+        	nowarn="off" 
+        	source="1.6"
+            target="1.6">
+        	
+        	<src path="${src}"/>
+        	<bootclasspath refid="bootclasspath"/>
+            <classpath refid="classpath"/> 
+        </javac>
+	<copy todir="${build.classes}/main/gui/images" >
+    		<fileset dir="${src}/main/gui/images">
+    			<include name="*.png" />
+   			</fileset>
+    	</copy>
+    </target>
+    
+    
+    <target name="jar"
+            depends="compile"
+            description="Create the jar file">
+
+        <jar destfile="${build}/zkschematic.jar">
+            <fileset dir="${build.classes}"/>
+        </jar>
+
+	</target>
+<target name="dist" depends="jar">
+		<copy todir="${build}">
+			<fileset dir="${lib}">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+</target>
+
+</project>

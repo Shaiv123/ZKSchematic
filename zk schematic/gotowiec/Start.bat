@@ -1,0 +1,1 @@
+java -Xms512m -Xmx1024m -cp ./libs/*;zkschematic.jar main.schematic
