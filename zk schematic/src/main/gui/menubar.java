@@ -45,7 +45,7 @@ public class menubar implements ActionListener{
 	    JMenuItem paste =new JMenuItem("Paste");
 	    JMenuItem delete =new JMenuItem("Delete");
 	    file.add(neww);
-	    file.add(open);
+	    //file.add(open);
 	    //file.add(save);
 	    //file.add(saveas);
 	    //file.add(print);
@@ -204,7 +204,7 @@ public class menubar implements ActionListener{
 			//final JFrame f = new JFrame("Wybierz typ ZK");
             JPanel p = new JPanel();
             //p.setLayout(new FlowLayout());
-            p.setLayout(new GridLayout(15, 3, 1, 1));
+            p.setLayout(new GridLayout(45, 2, 1, 1));
             JScrollPane s = new JScrollPane(p,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
            // f.setLayout(new FlowLayout());
             f.setSize(1400,1000);

@@ -68,7 +68,6 @@ public class ZK extends JComponent implements MouseListener, ActionListener, Pri
 	  protected FastMap<String,desc> rnode = new FastMap<String,desc>();
 	  protected FastMap<String,img> imgnode = new FastMap<String,img>();
 	  
-	  protected float _size = 30.0f;
 	  
 	  protected desc NrZK=new desc(), TypZK=new desc();
 	  
@@ -439,7 +438,7 @@ public class ZK extends JComponent implements MouseListener, ActionListener, Pri
 		if (cmd.equals("saveas")) {
 			JFileChooser saveFile = new JFileChooser();
             saveFile.setFileFilter(new FileTypeFilter(".pdf","pdf file"));
-            saveFile.setFileFilter(new FileTypeFilter(".xml","xml file"));
+            //saveFile.setFileFilter(new FileTypeFilter(".xml","xml file"));
             int fs = saveFile.showSaveDialog(null);
             if (fs == JFileChooser.APPROVE_OPTION) {
             	File f = saveFile.getSelectedFile();
@@ -450,7 +449,7 @@ public class ZK extends JComponent implements MouseListener, ActionListener, Pri
             		String path = f.getPath()+".pdf";
             		backcolor = Color.white;
             		clear();
-            		PdfWrite.PdfWriter(path, image, _size);
+            		PdfWrite.PdfWriter(path, image);
             		backcolor = Color.blue;
             		clear();
             	}
